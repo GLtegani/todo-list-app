@@ -1,4 +1,5 @@
-import { Header } from './components/Header/Header'
+import { Header } from './components/Header/index'
+
 export const App = () => {
   return (
     <Header />

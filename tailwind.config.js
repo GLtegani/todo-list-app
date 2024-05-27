@@ -4,25 +4,21 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
+  darkMode: 'selector',
   theme: {
     extend: {
       fontFamily: {
         sans: ['"M PLUS Rounded 1c"', '"sans-serif"']
       },
       colors: {
-        primary: {
-          light: '', // cor primária para light mode
-          dark: '#f9fafb',  // cor primária para dark mode
-        },
-        background: {
-          light: '#ffffff', // cor de fundo para light mode
-          dark: '#1a202c',  // cor de fundo para dark mode
-        },
-        text: {
-          light: '#000000', // cor do texto para light mode
-          dark: '#f9fafb',  // cor do texto para dark mode
-        },
+        background: "rgba(var(--background))",
+        border: "rgba(var(--border))",
+        container: "rgba(var(--container))",
+        "copy-primary": "rgba(var(--copy-primary))",
+        "copy-secondary": "rgba(var(--copy-secondary))",
+        cta: "rgba(var(--cta))",
+        "cta-active": "rgba(var(--cta-active))",
+        "cta-text": "rgba(var(--cta-text))",
       },
     },
   },
