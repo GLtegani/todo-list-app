@@ -1,8 +1,11 @@
-import { Header } from './components/Header/index'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
 
 export const App = () => {
   return (
-    <Header />
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   )
 }
 
