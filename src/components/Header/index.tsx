@@ -1,21 +1,29 @@
 import { ClipboardText } from 'phosphor-react'
 import { ToggleTheme } from './ToggleTheme'
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
    const [darkTheme, setDarkTheme] = useState(true)
 
    const handleChangeTheme = () => {
-      setDarkTheme(!darkTheme);
-      document.body.classList.toggle('dark');
-      document.body.classList.toggle('light');
+      setDarkTheme(darkTheme => !darkTheme);
    }
 
+   useEffect(() => {
+      if(darkTheme) {
+         document.body.classList.add('dark');
+         document.body.classList.remove('light');
+      } else {
+         document.body.classList.remove('dark');
+         document.body.classList.add('light');
+      }
+   }, [darkTheme])
+
    return (
-         <header className='bg-container p-2 text-copy-primary m-3 mb-16 rounded-xl'>
-            <div className='flex items-center gap-3 mb-5 justify-between'>
-               <h1 className='font-bold flex items-center gap-2'>
+         <header className='bg-container p-2 text-copy-primary font-bold m-3 rounded-xl'>
+            <div className='flex items-center gap-3 mb-4 justify-between'>
+               <h1 className='flex items-center gap-2'>
                   <ClipboardText className='size-8'/>
                   TO-DO LIST
                </h1>
@@ -25,17 +33,17 @@ export const Header = () => {
                   onToggle={handleChangeTheme}
                />
             </div>
-            <nav>
+            <nav className='mb-2'>
                <ul className='flex align-middle justify-around'>
                   <li>
-                     <NavLink to="/" title='Tasks' className='text-xl hover:text-cta duration-75'>
+                     <Link to="/" title='Tasks' className='text-xl hover:bg-cta-active hover:text-white p-2 rounded-full duration-150'>
                         Tasks
-                     </NavLink>
+                     </Link>
                   </li>
                   <li>
-                     <NavLink to="/streaks" title='Streaks' className='text-xl hover:text-cta duration-75'>
+                     <Link to="/streaks" title='Streaks' className='text-xl hover:bg-cta-active hover:text-white rounded-full p-2 duration-150'>
                         Streaks
-                     </NavLink>
+                     </Link>
                   </li>
                </ul>
             </nav>
