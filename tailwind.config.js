@@ -14,6 +14,7 @@ export default {
         background: "rgba(var(--background))",
         border: "rgba(var(--border))",
         container: "rgba(var(--container))",
+        "input-container": "rgba(var(--input-container))",
         "copy-primary": "rgba(var(--copy-primary))",
         "copy-secondary": "rgba(var(--copy-secondary))",
         cta: "rgba(var(--cta))",
