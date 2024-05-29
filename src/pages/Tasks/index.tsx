@@ -11,7 +11,7 @@ export const Tasks = () => {
                      <Plus />
                   </button>
                </div>
-               <select className='w-20 bg-input-container border-2 border-solid border-border rounded-lg h-10'>
+               <select className='w-20 bg-input-container border-2 border-solid border-border rounded-lg h-10 cursor-pointer'>
                   <option value="all-tasks">All</option>
                   <option value="completed-tasks">Finished</option>
                   <option value="To-do">To-do</option>
