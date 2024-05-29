@@ -37,12 +37,20 @@ export const Header = () => {
             <nav className='mb-2'>
                <ul className='flex align-middle justify-around'>
                   <li>
-                     <Link to="/" title='Tasks' className={`text-xl ${location.pathname === '/' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white '} p-2 rounded-full duration-150`} >
+                     <Link 
+                        to="/" 
+                        title='Tasks' 
+                        className={`text-xl ${location.pathname === '/' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white '} p-2 rounded-xl duration-150`} 
+                     >
                         Tasks
                      </Link>
                   </li>
                   <li>
-                     <Link to="/streaks" title='Streaks' className={`text-xl ${location.pathname === '/streaks' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white'} rounded-full p-2 duration-150`}>
+                     <Link 
+                     to="/streaks" 
+                     title='Streaks' 
+                     className={`text-xl ${location.pathname === '/streaks' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white'} rounded-xl p-2 duration-150`}
+                  >
                         Streaks
                      </Link>
                   </li>
