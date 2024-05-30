@@ -23,9 +23,9 @@ export const Header = () => {
 
    return (
          <header className='container-styles font-bold'>
-            <div className='flex items-center gap-3 mb-4 justify-between'>
+            <div className='flex items-center gap-3 mb-4 sm:mb-8 justify-between sm:text-2xl'>
                <h1 className='flex items-center gap-2'>
-                  <ClipboardText className='size-8'/>
+                  <ClipboardText className='size-8 sm:size-10'/>
                   TO-DO LIST
                </h1>
 
@@ -40,7 +40,7 @@ export const Header = () => {
                      <Link 
                         to="/" 
                         title='Tasks' 
-                        className={`text-xl ${location.pathname === '/' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white '} p-2 rounded-xl duration-150`} 
+                        className={`text-xl sm:text-2xl ${location.pathname === '/' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white '} p-1 sm:p-2 rounded-xl duration-150`} 
                      >
                         Tasks
                      </Link>
@@ -49,7 +49,7 @@ export const Header = () => {
                      <Link 
                      to="/streaks" 
                      title='Streaks' 
-                     className={`text-xl ${location.pathname === '/streaks' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white'} rounded-xl p-2 duration-150`}
+                     className={`text-xl sm:text-2xl ${location.pathname === '/streaks' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white'} rounded-xl p-1 sm:p-2 duration-150`}
                   >
                         Streaks
                      </Link>
