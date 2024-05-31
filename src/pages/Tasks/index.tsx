@@ -1,17 +1,29 @@
 import { Plus } from 'phosphor-react'
 import { Task } from './Task'
 import { Select } from '../components/Select'
+import { FormEvent, useRef } from 'react'
 
 export const Tasks = () => {
+   const inputRef = useRef<HTMLInputElement>(null)
+
+   const handleSubmit = (event: FormEvent) => {
+      event.preventDefault()
+      if(inputRef.current) {
+         const inputValue = inputRef.current.value
+         console.log(inputValue)
+      }
+   }
+
    return (
       <div className="container-styles">
-         <form>
+         <form onSubmit={handleSubmit}>
             <header className='flex items-center sm:flex-row justify-center gap-2'>
                <div className='flex w-10/12 max-w-md justify-center'>
                   <input 
                      className='w-10/12 max-w-md p-2 h-10 rounded-s-lg bg-input-container border-border border-solid sm:text-xl' 
                      type="text" 
                      placeholder="Add task"
+                     ref={inputRef}
                   />
                   <button 
                      type="submit" 
