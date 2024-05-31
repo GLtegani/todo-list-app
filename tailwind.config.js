@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"M PLUS Rounded 1c"', '"sans-serif"']
+        sans: ['"Inter"', '"sans-serif"']
       },
       colors: {
         background: "rgba(var(--background))",

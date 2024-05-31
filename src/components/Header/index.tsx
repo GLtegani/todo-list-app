@@ -42,7 +42,7 @@ export const Header = () => {
                         title='Tasks' 
                         className={`text-xl sm:text-2xl ${location.pathname === '/' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white '} p-1 sm:p-2 rounded-xl duration-150`} 
                      >
-                        Tasks
+                        TASKS
                      </Link>
                   </li>
                   <li>
@@ -51,7 +51,7 @@ export const Header = () => {
                      title='Streaks' 
                      className={`text-xl sm:text-2xl ${location.pathname === '/streaks' ? 'bg-cta-active text-white' : 'hover:bg-cta-active hover:text-white'} rounded-xl p-1 sm:p-2 duration-150`}
                   >
-                        Streaks
+                        STREAKS
                      </Link>
                   </li>
                </ul>
