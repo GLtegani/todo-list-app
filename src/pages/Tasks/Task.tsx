@@ -2,6 +2,7 @@ import { Trash, Check } from 'phosphor-react'
 
 interface TaskProps {
    completed: boolean
+   name?: string
 }
 
 export const Task = ({completed}:TaskProps) => {
