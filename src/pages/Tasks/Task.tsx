@@ -2,16 +2,17 @@ import { Trash, Check } from 'phosphor-react'
 
 interface TaskProps {
    completed: boolean
-   name?: string
+   name: string
+   index: number
 }
 
-export const Task = ({completed}:TaskProps) => {
+export const Task = ({completed = false, name}:TaskProps) => {
    return (
       <div className="bg-background p-4 sm:p-6 m-4 text-xs sm:text-lg sm:m-8 
          flex items-center gap-4 justify-between rounded-xl"
       >
          <p className={`${completed ? 'line-through text-lime-600' : ''}`}>
-            To study React fundamentals
+            {name}
          </p>
          
          {completed ? (

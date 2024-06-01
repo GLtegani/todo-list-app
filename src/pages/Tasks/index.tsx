@@ -24,8 +24,7 @@ export const Tasks = () => {
       setTasks(
          produce((draft) => {
             draft.push(data.userTask)
-            console.log(tasks)
-            
+
          })
       )
 
@@ -58,20 +57,26 @@ export const Tasks = () => {
 
             <main>
                <h2 className='my-8 text-base sm:text-xl text-center'>
-                  Tasks to do - <span>4</span>
+                  Tasks to do - <span>{tasks.length}</span>
                </h2>
-
-               <Task 
-                  completed={false}
-               />
+               
+               {
+                  tasks.map((task, index) => (
+                     <Task
+                        key={index}
+                        index={index}
+                        completed={false} 
+                        name={task}
+                     />
+                  ))
+               }
             </main>
 
             <footer>
                <h2 className='my-8 text-base sm:text-xl text-center'>
-                  Done - <span>1</span>
+                  Done - <span>0</span>
                </h2>
 
-               <Task completed={true}/>
             </footer>
          </form>
       </div>
