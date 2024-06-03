@@ -18,7 +18,6 @@ export type TasksSchema = z.infer<typeof tasksSchema>
 export const Tasks = () => {
    const {register, handleSubmit, reset } = useForm<TasksSchema>({
       resolver: zodResolver(tasksSchema)
-
    })
 
    const { tasks, setUserTasks, completedTasks } = useTasks()

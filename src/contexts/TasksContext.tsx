@@ -35,18 +35,11 @@ export const TaskProvider = ({children}: TaskProviderProps) => {
    const [completedTasks, setCompletedTasks] = useState<TasksSchema[]>([])
 
    const setUserTasks = (data: TasksSchema) => {
-      if(data.isCompleted) {
-         setCompletedTasks(
-            produce((draft) => {
-               draft.push(data)
-            })
-         )
-      } else {
+      if(!data.isCompleted) {
          setTasks(
             produce((draft) => {
                draft.push(data)
             })
-
          )
       }
    }
