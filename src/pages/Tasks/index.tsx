@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTasks } from '../../contexts/TasksContext'
 import { v4 as uuidv4 } from 'uuid'
+import { useState } from 'react'
 
 const tasksSchema = z.object({
    userTask: z.string().min(1),
@@ -20,12 +21,30 @@ export const Tasks = () => {
       resolver: zodResolver(tasksSchema)
    })
 
+   const [option, setOption] = useState('allTasks')
+
    const { tasks, setUserTasks, completedTasks } = useTasks()
 
 
    const handleUserTask = (data: TasksSchema) => {
       setUserTasks(data)
       reset()
+   }
+
+   const handleChangeOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedOption = event.target.value
+
+      switch(selectedOption) {
+         case 'done':
+            setOption('done')
+            break
+         case 'toDo':
+            setOption('toDo')
+            break
+         case 'allTasks':
+            setOption('allTasks')
+            break
+      }
    }
    
    return (
@@ -49,40 +68,44 @@ export const Tasks = () => {
                
                <Select 
                   locale='task'
+                  changeOption={handleChangeOption}
                />
             </header>
 
             <main>
-               <h2 className='my-8 text-base sm:text-xl text-center'>
-                  Tasks to do - <span>{tasks.length}</span>
-               </h2>
+               <div className={`${option === 'toDo' || option === 'allTasks' ? '' : 'hidden'}`}>
+                  <h2 className='my-8 text-base sm:text-xl text-center'>
+                     Tasks to do - <span>{tasks.length}</span>
+                  </h2>
                
-               {
-                  tasks.map((userTask, index) => (
-                     <Task
-                        key={userTask.id}
-                        task={userTask}
-                        index={index}
-                     />
-                  ))
-               }
+                  {
+                     tasks.map((userTask, index) => (
+                        <Task
+                           key={userTask.id}
+                           task={userTask}
+                           index={index}
+                        />
+                     ))
+                  }
+               </div>
             </main>
 
             <footer>
-               <h2 className='my-8 text-base sm:text-xl text-center'>
-                  Done - <span>{completedTasks.length}</span>
-               </h2>
+               <div className={`${option === 'done' || option === 'allTasks' ? '' : 'hidden'}`}>
+                  <h2 className='my-8 text-base sm:text-xl text-center'>
+                     Done - <span>{completedTasks.length}</span>
+                  </h2>
 
-               {
-                  completedTasks.map((completedTasks, index) => (
-                     <Task
-                        key={completedTasks.id}
-                        task={completedTasks}
-                        index={index}
-                     />
-                  ))
-               }
-
+                  {
+                     completedTasks.map((completedTasks, index) => (
+                        <Task
+                           key={completedTasks.id}
+                           task={completedTasks}
+                           index={index}
+                        />
+                     ))
+                  }
+               </div>
             </footer>
          </form>
       </div>

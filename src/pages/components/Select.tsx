@@ -1,19 +1,12 @@
 interface SelectProps {
    locale: 'task' | 'streak'
+   changeOption: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-export const Select = ({locale}:SelectProps) => {
-   const handleChangeOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const selectedOption = event.target.value.toLowerCase()
-      
-      if(selectedOption === 'done') {
-         
-      }
-   }
-
+export const Select = ({locale, changeOption}:SelectProps) => {
    return (
       <select 
-         onChange={handleChangeOption}
+         onChange={changeOption}
          className='bg-input-container border-2 border-solid border-border 
          rounded-lg h-10 cursor-pointer w-20 sm:w-24'
       >

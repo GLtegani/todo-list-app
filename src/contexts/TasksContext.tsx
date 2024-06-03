@@ -1,7 +1,6 @@
 import { produce } from "immer";
 import { createContext, ReactNode, useState, useContext } from "react";
 import { TasksSchema } from "../pages/Tasks";
-import { v4 as uuidv4 } from 'uuid'
 
 interface TaskProviderProps {
    children: ReactNode
