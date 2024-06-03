@@ -1,6 +1,6 @@
 interface SelectProps {
    locale: 'task' | 'streak'
-   changeOption: (event: React.ChangeEvent<HTMLSelectElement>) => void
+   changeOption?: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 export const Select = ({locale, changeOption}:SelectProps) => {
