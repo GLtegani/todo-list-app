@@ -4,30 +4,28 @@ import { Select } from '../components/Select'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { produce } from 'immer'
+import { useTasks } from '../../contexts/TasksContext'
+import { v4 as uuidv4 } from 'uuid'
 
 const tasksSchema = z.object({
-   userTask: z.string().min(1)
+   userTask: z.string().min(1),
+   isCompleted: z.boolean().default(false),
+   id: z.string().default(() => uuidv4())
 })
 
-type TasksSchema = z.infer<typeof tasksSchema>
+export type TasksSchema = z.infer<typeof tasksSchema>
 
 export const Tasks = () => {
    const {register, handleSubmit, reset } = useForm<TasksSchema>({
       resolver: zodResolver(tasksSchema)
+
    })
 
-   const [tasks, setTasks] = useState<string[]>([])
+   const { tasks, setUserTasks, completedTasks } = useTasks()
+
 
    const handleUserTask = (data: TasksSchema) => {
-      setTasks(
-         produce((draft) => {
-            draft.push(data.userTask)
-
-         })
-      )
-
+      setUserTasks(data)
       reset()
    }
    
@@ -61,12 +59,11 @@ export const Tasks = () => {
                </h2>
                
                {
-                  tasks.map((task, index) => (
+                  tasks.map((userTask, index) => (
                      <Task
-                        key={index}
+                        key={userTask.id}
+                        task={userTask}
                         index={index}
-                        completed={false} 
-                        name={task}
                      />
                   ))
                }
@@ -74,8 +71,18 @@ export const Tasks = () => {
 
             <footer>
                <h2 className='my-8 text-base sm:text-xl text-center'>
-                  Done - <span>0</span>
+                  Done - <span>{completedTasks.length}</span>
                </h2>
+
+               {
+                  completedTasks.map((completedTasks, index) => (
+                     <Task
+                        key={completedTasks.id}
+                        task={completedTasks}
+                        index={index}
+                     />
+                  ))
+               }
 
             </footer>
          </form>
